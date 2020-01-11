@@ -1,0 +1,22 @@
+--> I have Coded everything on vs code and tested it using postman which is an http client.
+
+--> This database is accessiable everywhere as long as you have username and password Which is already embedded in the code (keys.js)
+
+--> Username: ContactManagerDatabase
+--> Password: Poop4331
+
+--> I have tested this database and added my contact, gino's contact and zik's contact
+
+--> Through postman i was able to add delete items in our data base
+
+--> Most of the code has comments on what I was trying to do
+
+--> If you have any questions just let me know
+
+--> Feel free to make anychanges in the code
+
+--> Required Packages and installations: npm i express body-parser mongoose concurrently
+
+--> Videos Referenced: https://www.youtube.com/watch?v=5yTazHkDR4o&list=PLillGF-RfqbbiTGgA77tGO426V3hRF9iE&index=2
+
+------------------------------------------------------------------- THANK YOU----------------------------------------------------------------------------------------------------------
