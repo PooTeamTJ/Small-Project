@@ -1,4 +1,4 @@
-// in our server.js we need 
+// in our server.js we need
 // express, Mongoose, bodyparser
 
 const express = require('express');
@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 
 /*
-    In order for the api routes to acutally 
+    In order for the api routes to acutally
     work we need to do something
 */
 
@@ -16,7 +16,7 @@ const items = require('./routes/api/items')
 const app = express();
 
 //BodyParser Middleware
-// I thnink the body parser actually translates
+// I tnink the body parser actually translates
 // the json script into understandable
 app.use(bodyparser.json());
 
@@ -39,7 +39,7 @@ mongoose
 // Now since we are connected to our server we need to run it
 const port = process.env.PORT || 5000;
 /*
-    process.env.PORT is an envoriment variable 
+    process.env.PORT is an envoriment variable
     I dont know what that means
 */
 
@@ -54,6 +54,6 @@ app.use('/api/items', items);
 app.listen(port, () => console.log(`Server has started on port ${port}`));
 
 /*
-    We want to listen to what our port has returned and display it on 
+    We want to listen to what our port has returned and display it on
     the log.
 */
