@@ -16,7 +16,7 @@ const items = require('./routes/api/items')
 const app = express();
 
 //BodyParser Middleware
-// I tnink the body parser actually translates
+// I think the body parser actually translates
 // the json script into understandable
 app.use(bodyparser.json());
 
