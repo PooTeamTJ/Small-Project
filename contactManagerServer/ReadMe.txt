@@ -6,4 +6,6 @@ In the database there are User and Contact. Each contact has a user owner.
 
 I tested all the endpoints using postman and Mongodb Atlas.
 
+The file you need to run is server.js
+
 Itzik (ZeKe) Efraim
