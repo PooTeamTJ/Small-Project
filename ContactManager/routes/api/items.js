@@ -2,9 +2,11 @@
 const express = require('express');
 const router = express.Router();
 /*
-    Bringing the Item Model we need that to 
+    Bringing the Item Model we need that to
     make querry and to find items stuff like that
 */
+
+//test 
 const Item = require('../../models_Data/Item');
 
 /*
@@ -12,28 +14,28 @@ const Item = require('../../models_Data/Item');
     Description: Gets all the items
     Access: The access is public for now
             because we havent set any
-            authorization yet I dont 
+            authorization yet I dont
             know if we need to
 */
 
-router.get('/',(req, res) => 
+router.get('/',(req, res) =>
 {
     Item.find()
     .sort({Firstname: 1})
     .then(items => res.json(items))
-}); 
+});
 
 /*
     @route Post api/items
     Description: Creates a item
     Access: The access is public for now
             because we havent set any
-            authorization yet I dont 
+            authorization yet I dont
             know if we need to
     --> Normally this would be private
 */
 
-router.post('/',(req, res) => 
+router.post('/',(req, res) =>
 {
    const newItem = new Item(
        {
@@ -48,7 +50,7 @@ router.post('/',(req, res) =>
     @Route Delete api/items/id
     Description: We find the created item by id and then delete it
 */
-router.delete('/:id',(req, res) => 
+router.delete('/:id',(req, res) =>
 {
    const newItem = new Item(
   Item.findById(req.params.id)
@@ -68,13 +70,13 @@ router.delete('/:id',(req, res) =>
 module.exports = router;
 
 /*
-    We need this default router or 
+    We need this default router or
     else nothing will work
 */
 
 /*
-    TO test our API we need an HTTP Client 
-    now we need 
+    TO test our API we need an HTTP Client
+    now we need
     POstman or Swagger, etc
 
     -- I tested this on PostMan but we can
