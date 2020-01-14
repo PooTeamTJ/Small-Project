@@ -9,18 +9,27 @@ The file you need to run is server.js
 Database: 
 
   User object with the following fields:
+  
     name, (required)
+    
     password, (required)
+    
     email, (required)
+    
     age
     
   Contact object with the following fields:
+  
     name, (required)
+    
     phonenumber, (required)
+    
     email, (required)
+    
     birthday
     
 Relation between User and Contact:
+
 Every Contact instance has a user instance as an owner
 
 Itzik (ZeKe) Efraim
