@@ -96,7 +96,7 @@ router.get('/contact', auth, async (req, res) => {
     const parts = req.query.sortBy.split(":")
     // takes the first part (field that we want to sort by) of url and adds it as a field to object sort,
     // then setting its value to either 1 ascending or -1 descending
-    sort[parts[0]] =  part[1] === 'desc' ? -1 : 1
+    sort[parts[0]] =  parts[1] === 'desc' ? -1 : 1
   }
 
   try {
