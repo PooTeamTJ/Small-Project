@@ -146,7 +146,6 @@ userSchema.pre('save', async function (next) {
 // it's contact from the database
 userSchema.pre('remove', async function (next) {
   const user = this
-  // this needs to be changed
   await Contact.deleteMany({ owner: user._id })
 
   next()

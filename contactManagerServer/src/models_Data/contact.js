@@ -28,7 +28,6 @@ const Contact = mongoose.model('Contact', {
     }
   },
   email: {
-    unique: true,
     type: String,
     required: true,
     lowercase: true,

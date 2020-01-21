@@ -11,6 +11,7 @@ update a contact by id
 Itzik (Zeke) Efraim
 **/
 
+
 const express = require('express')
 const router = new express.Router()
 const auth = require('../../middleware/auth')
@@ -75,10 +76,45 @@ router.get('/contact/:id', auth, async (req, res) => {
 })
 
 // returns all contacts that belongs to the user
+// to serach the url should be /contact?name=itzik
+// /contact?sortBy=name:asc // sort result in ascending. if want by descending replace asc with desc
+// /tasks?limit=10&skip=0 // return 10 results in first page. skip=1 will go to second page and so on
 router.get('/contact', auth, async (req, res) => {
+  // object to use in the filter populate.
+  const match = {}
+  // if the url string contains name it will add it to match.
+  if (req.query.name) {
+    // search people that start with a given string or match
+    match.name = {'$regex': req.query.name}
+  }
+
+  // sorting object
+  const sort = {}
+  // if url has sortBy
+  if (req.query.sortBy) {
+    // splits the url to 2 parts, before and after : we can also use _ instead of
+    const parts = req.query.sortBy.split(":")
+    // takes the first part (field that we want to sort by) of url and adds it as a field to object sort,
+    // then setting its value to either 1 ascending or -1 descending
+    sort[parts[0]] =  part[1] === 'desc' ? -1 : 1
+  }
+
   try {
-    // only returns tasks that belongs to that user
-    await req.user.populate('contact').execPopulate()
+    // only returns contacts that belongs to that user
+    // has an option to filter the data and pagination (divide pages with max results and page number)  and sort it
+    await req.user.populate({
+      path: 'contact',
+      match,
+
+      options: {
+        // max results in a page
+        limit: parseInt(req.query.limit),
+        // what page you want to be in
+        skip: parseInt(req.query.skip),
+        // takes sort object from above
+        sort
+      }
+    }).execPopulate()
     res.send(req.user.contact)
   } catch (err) {
       req.status(500).send(err)
