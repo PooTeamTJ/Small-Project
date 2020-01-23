@@ -13,8 +13,8 @@ const taskRouter = require('./routes/api/contact')
 
 // creates the server
 const app = express()
-// gets the port from horaku or 3000
-const port = process.env.PORT || 3000
+// gets the port from horaku or 5000 (switched port to 5000 from 3000 because client 'app' is using 3000)
+const port = process.env.PORT || 5000
 
 // middleware function that translates the objects to json file
 app.use(express.json())

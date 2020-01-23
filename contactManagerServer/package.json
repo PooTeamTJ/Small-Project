@@ -2,19 +2,23 @@
   "name": "contactmanager",
   "version": "1.0.0",
   "description": "ContactManager Built with MERN Stack",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "client-install": "npm install --prefix client",
+    "start": "node src/server.js",
+    "server": "nodemon src/server.js",
+    "client": "npm start --prefix ../client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Saitejas Mopuri",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "mongoose": "^5.8.6",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "validator": "^12.1.0"
   }
-
 }
