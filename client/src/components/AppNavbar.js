@@ -69,6 +69,7 @@ class AppNavbar extends Component
                         </NavItem>
                         <NavItem>
                              <Logout></Logout>
+                             
                          </NavItem>
                     </Fragment>
                 );
@@ -106,7 +107,6 @@ class AppNavbar extends Component
                             so that the text can be a lite color
                             later on we can change it to what ever color we 
                             want."dark"
-
                         2. 
                             We want to really see how responsive is our front end
                             so we are doing small "sm".
@@ -115,8 +115,6 @@ class AppNavbar extends Component
                             "mb-5".
                         
                         We can change this in the future
-
-
                    */}
                    <Navbar color= "dark" dark expand = "sm" className="mb-5">
                         <Container>

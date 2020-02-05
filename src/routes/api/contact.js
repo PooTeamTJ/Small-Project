@@ -1,13 +1,11 @@
 /**
 All the contact endpoints are in this class.
 To run it we to npm install express, and require auth and Contact.
-
 These are the endpoints for the contact objest:
 delete a contact by id,
 get one by id,
 get all contacts of a user,
 update a contact by id
-
 Itzik (Zeke) Efraim
 **/
 
@@ -73,7 +71,6 @@ router.get('/contact/:id', auth, async (req, res) => {
 
   }
 })
-
 // returns all contacts that belongs to the user
 // to serach the url should be /contact?name=itzik
 // /contact?sortBy=name:asc // sort result in ascending. if want by descending replace asc with desc
@@ -120,19 +117,16 @@ router.get('/contact', auth, async (req, res) => {
   }
 })
 
-
-
-
-// // returns all contacts that belongs to the user
-// router.get('/contact', auth, async (req, res) => {
-//   try {
-//     // only returns tasks that belongs to that user
-//     await req.user.populate('contact').execPopulate()
-//      res.send(req.user.contact)
-//   } catch (err) {
-//       req.status(500).send(err)
-//   }
-// })
+// returns all contacts that belongs to the user
+router.get('/contact', auth, async (req, res) => {
+  try {
+    // only returns tasks that belongs to that user
+    await req.user.populate('contact').execPopulate()
+     res.send(req.user.contact)
+  } catch (err) {
+      req.status(500).send(err)
+  }
+})
 
 
 // update contact by id
@@ -141,7 +135,7 @@ router.patch('/contact/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body)
   // these are the fields that are allowed to be updated
    const allowedUpdates = ['Firstname', 'Lastname', 'PhoneNumber', 'Email', 'DOB']
-  // // making sure the request is valid
+  // // // making sure the request is valid
    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
    if (!isValidOperation) {

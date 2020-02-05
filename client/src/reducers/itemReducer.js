@@ -1,8 +1,8 @@
-// This is where we are going to check on our
+// This is where we are going to check on our 
 // actions.
 // We are going to have our get, add, etc items action
 
-import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, SEARCH_ITEM, ITEMS_LOADING} from '../actions/types';
+import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, SEARCH_ITEM, ITEMS_LOADING, UPDATE_ITEM} from '../actions/types';
 
 const initialState =
 {
@@ -13,7 +13,7 @@ const initialState =
 
 export default function(state = initialState, action)
 {
-
+    
     switch(action.type)
     {
       case GET_ITEMS:
@@ -31,15 +31,21 @@ export default function(state = initialState, action)
         case ADD_ITEM:
             return {
                ...state,
-               items: [action.payload, ...state.items]
+               items: [action.payload, ...state.items] 
             };
-
-        case SEARCH_ITEM:
-            return{
-                ...state,
-                items: action.payload
-                //items: state.items.filter(item=> item.Firstname.toLowerCase() === action.payload.Firstname.toLowerCase())
-            }
+            
+            case SEARCH_ITEM:
+                return{
+                    ...state,
+                    items: action.payload
+                    //items: state.items.filter(item=> item.Firstname.toLowerCase() === action.payload.Firstname.toLowerCase())
+                }
+                case UPDATE_ITEM:
+                    return{
+                        ...state,
+                        items: action.payload
+                        //items: state.items.filter(item=> item.Firstname.toLowerCase() === action.payload.Firstname.toLowerCase())
+                    }
         case ITEMS_LOADING:
             return{
                 ...state,
@@ -48,5 +54,5 @@ export default function(state = initialState, action)
         default:
             return state;
     }
-
+    
 }

@@ -117,7 +117,7 @@ class ItemModel extends Component {
                 </Button> : 
                     <h4 
                         className = "mb-3 ml-4"
-                        textAlign = "center">
+                        textalign = "center">
                             Welcome to contact Manager!!!
                             </h4>}
                     

@@ -12,6 +12,9 @@ export class Logout extends Component {
     static propTypes = {
         logout: PropTypes.func.isRequired
     }
+    onClickrefresh = () => {
+        window.location.reload(false)
+    }
     render() {
         return (
             <div>
