@@ -10,7 +10,7 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 /*
-    Get all the contacts that match the owner id in 
+    Get all the contacts that match the owner id in
     the backend
 */
 
@@ -21,6 +21,18 @@ export const getItems = () => (dispatch, getState) =>
         .get('/contact', tokenConfig(getState))
         .then(res => dispatch({
             type: GET_ITEMS,
+            payload: res.data
+        }))
+        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+export const searchItem = (item) => (dispatch, getState) =>
+{
+    dispatch(setItemsLoading());
+    axios
+        .get(`/contact?Firstname=${item.Firstname}`, tokenConfig(getState))
+        .then(res => dispatch({
+            type: SEARCH_ITEM,
             payload: res.data
         }))
         .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
@@ -41,42 +53,34 @@ export const updateItem = (item, id) => (dispatch, getState)  => { // Update a c
     axios
       .patch(`/contact/${id}`,item, tokenConfig(getState))
     //   .then(res => dispatch({
-          
+
         //   type: UPDATE_ITEM
     //     //   payload: id
     //   }))
       .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-  
+
   };
 
 export const deleteItem = id => (dispatch, getState) => { // Delete the conatact
+  if (window.confirm('Are you sure you want to delete?')){
    axios.delete(`/contact/${id}`, tokenConfig(getState))
-   .then(res => 
+   .then(res =>
     dispatch({
         type: DELETE_ITEM,
         payload: id
     }))
     .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+  }
 
 };
 
 /*
-    Search items we dont actually make a http request it is 
+    Search items we dont actually make a http request it is
     just  I wasnot able to do it the components
     so i just did it in reduces by sending through here
 */
 
-export const searchItem = (item) => (dispatch, getState) =>
-{
-    dispatch(setItemsLoading());
-    axios
-        .get(`/contact?Firstname=${item.Firstname}`, tokenConfig(getState))
-        .then(res => dispatch({
-            type: SEARCH_ITEM,
-            payload: res.data
-        }))
-        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-};
+
 
 export const setItemsLoading = () => {
     return {

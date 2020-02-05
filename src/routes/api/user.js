@@ -1,16 +1,13 @@
 /**
 All the users endpoints are in this class.
 To run it we to npm install express, and require auth and User.
-
 These are the endpoints for the user objest:
-
 login
 logout from one session
 logout all sessions
 get your own information
 delete your user
 update user
-
 Itzik Zeke Efraim
 **/
 
@@ -26,12 +23,12 @@ router.post('/users/login', async (req, res) => {
     const user = await User.findByCredentials(req.body.email, req.body.password)
     const token = await user.generateAuthToken()
 
-    if (!user) return res.status(400).json({ msg: 'Invalid credentials or user does not exist'});
+    if (!user) return res.status(400).send({ "msg": 'Invalid credentials or user does not exist'});
 
     // if user was found send it
      res.send({ user, token })
   } catch (err) {
-    res.status(400).send()
+      res.status(400).send({"msg":"Login faild"})
   }
 })
 
@@ -47,10 +44,10 @@ router.post('/users', async (req, res) => {
    // saves user in database
    await user.save()
    const token = user.generateAuthToken()
-   return res.status(201).send({user, token})
+   return res.status(201).send({user, token, "msg":"New user was created!"})
  // sends the error and shows the error code
  } catch (err) {
-   return res.status(400).send(err)
+   return res.status(400).send({"msg":"Error! User was not created."})
  }
 })
 
