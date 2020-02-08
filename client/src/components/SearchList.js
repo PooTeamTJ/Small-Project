@@ -69,7 +69,7 @@ class SearchList extends Component
             {this.props.isAuthenticated ?  
                 <Button 
                     color="dark" 
-                    style = {{marginBottom: '2rem'}} 
+                    style = {{marginBottom: '2rem', marginRight: '5rem', display: "flex", float: "right"}}
                     onClick= {this.toggle}> 
                         Search Contact
                 </Button> : ''}

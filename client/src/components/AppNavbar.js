@@ -119,7 +119,7 @@ class AppNavbar extends Component
                    <Navbar color= "dark" dark expand = "sm" className="mb-5">
                         <Container>
                             {/* Headning as Contact Manager */}
-                            <NavbarBrand href = "/"> ConatactManager </NavbarBrand>
+                            <NavbarBrand href = "/"> Contact Manager </NavbarBrand>
                             {/* 
                                 When we click the nav bar it is going to
                                 change the isOPen to opposite state.

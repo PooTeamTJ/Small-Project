@@ -9,7 +9,7 @@
 
 import React, { Component, Fragment} from 'react';
 
-import {Container, ListGroup, ListGroupItem, Button, Modal, ModalHeader, Form, FormGroup, ModalBody,Label, Input} from 'reactstrap';
+import {Container, ListGroup, ListGroupItem, Button, Modal, ModalHeader, Form, FormGroup, ModalBody,Label, Input, ButtonToolbar} from 'reactstrap';
 
 import {CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
@@ -138,15 +138,18 @@ class Contactlist extends Component
            <div>
           {this.props.isAuthenticated ? 
        
-           <Container> 
-                 <Button onClick = {this.onGetitem.bind(this)}> Show Contacts </Button>
-                 <br></br>
-                 <br></br>
-               <Button onClick = {this.onClicklose.bind(this)}> Close contacts</Button>
-              
-             <ListGroup>
+           <Container>
+
+               <Button
+                  style = {{marginBottom: '2rem', marginRight: '5rem',  display: "flex", float: "left"}}
+                  onClick = {this.onGetitem.bind(this)}> Show Contacts </Button>
+               <Button 
+                  style = {{marginBottom: '2rem', marginRight: '5rem', display: "flex", float: "left"}} 
+                  onClick = {this.onClicklose.bind(this)}> Close contacts</Button>
+
+             <ListGroup style={{float: "left"}}>
            
-                 <TransitionGroup className = "Contact-list">
+                 <TransitionGroup className = "Contact-list" style={{marginTop: "5rem", float: "left"}}>
               
                     {/*items.map maps all the contacts that we got from the getItems*/}
                       
@@ -155,42 +158,25 @@ class Contactlist extends Component
                             key = {_id} 
                             timeout = {500} 
                             classNames = "fade">
-                             <ListGroupItem>
-                                    
-                                 <Button
-                                    className = "delete-btn"
-                                    color= "danger"
-                                    size= "sm"
-                                    onClick = {this.onDeleteClick.bind(this, _id)}
-                                    >
-                                        &times;     
-                                        Delete
-                                        
-                                      
-                                  </Button>
-                                  {/* <Button>Edit </Button>  */}
-                                   
-                              
-                                  
-                                        {/*
-                                            THis might be a little confusing why we use 
-                                            bind in here but we have to for the delete to work
-                                            or else it wont work.
-                                        */}
-                         
-                        
-                                 <div>
-                                    <Input type = "text" defaultValue = {Firstname} onChange = {this.onChangeFirst}>  </Input>
+                             
+                             <ListGroupItem style={{float: "left", marginTop: "1rem"}}>
+
+                                 <div style={{float: "left"}}>
+                                    <Input type = "text"  defaultValue = {Firstname} onChange = {this.onChangeFirst}>  </Input>
                                     <Input type = "text"  defaultValue = {Lastname} onChange = {this.onChangeLast}> </Input>
                                     <Input type = "text"  defaultValue = {PhoneNumber} onChange = {this.onChangePhone}> </Input>
                                     <Input type = "text"  defaultValue = {Email} onChange = {this.onChangeEmail}> </Input>
 
-
-                                     {/* <p> {_id} </p> */}
                                     <Button onClick = {this.onSubmit.bind(this, _id, Firstname, Lastname, PhoneNumber, Email)}> Save </Button>
-                                    
-                                  
-                                 </div>                                        
+                                    <Button
+                                    style={{marginLeft: ".1rem"}}
+                                    className = "delete-btn"
+                                    color= "danger"
+                                    onClick = {this.onDeleteClick.bind(this, _id)}>&times;     
+                                    Delete
+                                  </Button>
+                                 </div>
+
                             </ListGroupItem>
                              
                          </CSSTransition>
