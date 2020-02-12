@@ -4,119 +4,103 @@
     in the loaded list.
 */
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
 
-    Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    Form,
-    FormGroup,
-    Label,
-    Input
-} from 'reactstrap';
-
-import { connect } from 'react-redux';
-import { searchItem } from '../actions/itemActions';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { searchItem } from "../actions/itemActions";
+import PropTypes from "prop-types";
 // Imoprts
 
-class SearchList extends Component
-{
-    state = 
-    {
-        modal: false,
-        firstname: " "
-    }
+class SearchList extends Component {
+  state = {
+    modal: false,
+    firstname: " "
+  };
 
-    static propTypes = {
-        isAuthenticated: PropTypes.bool
-    }
+  static propTypes = {
+    isAuthenticated: PropTypes.bool
+  };
 
-    toggle = () =>
-    {
-        this.setState(
-            {
-                modal: !this.state.modal
-            }
-        );
-    };
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
-    onChangeFirst = (e) => {
+  onChangeFirst = e => {
+    this.setState({
+      firstname: e.target.value
+    });
+  };
 
-        this.setState({
-            firstname: e.target.value
-        })
-    };
-
-    onSubmit = (e) => {
-        e.preventDefault();
+  onSubmit = e => {
+    e.preventDefault();
 
     const newItem = {
-        Firstname: this.state.firstname
-    }
+      Firstname: this.state.firstname
+    };
     this.props.searchItem(newItem);
 
     this.toggle();
-    }
+  };
 
-    render()
-    {
-        return (
-        <div>
+  render() {
+    return (
+      <div>
+        {this.props.isAuthenticated ? (
+          <Button
+            color="dark"
+            style={{
+              marginBottom: "2rem",
+              marginRight: "5rem",
+              display: "flex",
+              float: "right"
+            }}
+            onClick={this.toggle}
+          >
+            Search Contact
+          </Button>
+        ) : (
+          ""
+        )}
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalHeader toggle={this.toggle}>Search some contacts</ModalHeader>
+          <ModalBody>
+            <Form onSubmit={this.onSubmit}>
+              <FormGroup>
+                <Label for="Contact">Contact</Label>
+                <Input
+                  type="text"
+                  firstname="firstname"
+                  id="Contact"
+                  placeholder="name"
+                  onChange={this.onChangeFirst}
+                ></Input>
 
-            {this.props.isAuthenticated ?  
-                <Button 
-                    color="dark" 
-                    style = {{marginBottom: '2rem', marginRight: '5rem', display: "flex", float: "right"}}
-                    onClick= {this.toggle}> 
-                        Search Contact
-                </Button> : ''}
-                    <Modal 
-                    isOpen = {this.state.modal}
-                    toggle = {this.toggle}
-                    >
-                    <ModalHeader toggle = {this.toggle}>
-                        Search some contacts 
-                            </ModalHeader>
-                                 <ModalBody>
-                                     <Form onSubmit = {this.onSubmit}>
-                                         <FormGroup>
-                                             <Label for = "Contact">
-                                                     Contact
-                                                </Label>
-                                                    <Input 
-                                                        type = "text"
-                                                        firstname= "firstname"
-                                                        id = "Contact"
-                                                        placeholder= "Firstname"
-                                                        onChange = {this.onChangeFirst}
-                                                        >
-
-                                                     </Input>
-
-                            
-                                                    <Button 
-                                                        color = "dark"
-                                                        style = {{marginTop: '2rem'}}
-                                                        block>
-
-                                                        Search Contact
-                                                    </Button>
-                                            </FormGroup>
-                                            </Form>
-                                        </ModalBody>
-                                    </Modal>
-                                </div>
-        );
-    }
+                <Button color="dark" style={{ marginTop: "2rem" }} block>
+                  Search Contact
+                </Button>
+              </FormGroup>
+            </Form>
+          </ModalBody>
+        </Modal>
+      </div>
+    );
+  }
 }
-const mapStateToProps = state => (
-    {
-        item: state.item,
-        isAuthenticated: state.auth.isAuthenticated
-    }
-)
+const mapStateToProps = state => ({
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-export default connect(mapStateToProps, {searchItem})(SearchList);
+export default connect(mapStateToProps, { searchItem })(SearchList);

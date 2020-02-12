@@ -7,7 +7,7 @@
 
 // Imports
 
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 import AppNavbar from './components/AppNavbar'
 
@@ -17,11 +17,11 @@ import Contactlist from './components/Contactlist';
 import ItemModel from './components/ItemModel';
 import { Container } from 'reactstrap';
 import SearchList from './components/SearchList';
-import {loadUser} from './actions/authActions';
+import { loadUser } from './actions/authActions';
 import { Provider } from 'react-redux';
 import store from './store';
-import {getItems} from './actions/itemActions';
-import {Button} from 'reactstrap';
+import { getItems } from './actions/itemActions';
+import { Button } from 'reactstrap';
 
 
 
@@ -35,28 +35,27 @@ class App extends Component {
       we wont get logged out, lose our token and
       the loaded contacts.
   */
-  componentDidMount(){
+  componentDidMount() {
     store.dispatch(loadUser()); // Load user comes from authactions
     // store.dispatch(getItems()); // getItems comes from itemActions
   }
 
-  render()
-  {
+  render() {
 
-  return (
-    // for details on store check store.js
-    <Provider store = {store}> 
-    <div className="App">
-      <AppNavbar/>
-      <Container>
-      <ItemModel/>
-      <SearchList/>
-      <Contactlist />
-      </Container>
-    </div>
-    </Provider>
-  );
- }
+    return (
+      // for details on store check store.js
+      <Provider store={store}>
+        <div className="App">
+          <AppNavbar />
+          <Container>
+            <ItemModel />
+            <SearchList />
+            <Contactlist />
+          </Container>
+        </div>
+      </Provider>
+    );
+  }
 }
 
 export default App;
