@@ -109,23 +109,25 @@ class ItemModel extends Component {
                 {/* checking for authentication  before we show our Add button */}
 
                 {this.props.isAuthenticated ?  
+                // if logged in
                 <Button 
                     color="dark" 
-                    style = {{marginBottom: '2rem'}} 
+                    style = {{marginBottom: '2rem', marginRight: '5rem', display: "flex", float: "right"}}
                     onClick= {this.toggle}>  
                         Add Contact
-                </Button> : 
+                </Button> 
+                : // else if not logged in
                     <h4 
                         className = "mb-3 ml-4"
                         textalign = "center">
-                            Welcome to contact Manager!!!
-                            </h4>}
+                        Welcome to contact Manager!!!
+                    </h4>}
                     
                    
-                            <Modal 
-                            isOpen = {this.state.modal}
-                            toggle = {this.toggle}
-                            >
+                    <Modal 
+                    isOpen = {this.state.modal}
+                    toggle = {this.toggle}
+                    >
                 
                         <ModalHeader toggle = {this.toggle}>
                         Add some contacts 

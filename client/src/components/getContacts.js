@@ -22,7 +22,7 @@ render(){
 
 }
 
-getContacts.propTypes = {
+getContacts.propTypes = { 
     getItems: PropTypes.func.isRequired
 }
 
