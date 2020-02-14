@@ -149,64 +149,15 @@ class RegisterModel extends Component {
                     {this.state.msg ? <Alert color ="danger">{this.state.msg}</Alert>: null} 
                  <Form onSubmit = {this.onSubmit}>
                     <FormGroup>
-                        <Label for = "name">
-                            </Label>
-                            <Input 
-                                type = "text"
-                                name= "name"
-                                id = "Contact"
-                                placeholder= "Name"
-                                onChange = {this.onChangeName}
-                                required
-                                >
-
-                            </Input>
-                            <Label for = "email">
-                            </Label>
-                            <Input 
-                                type = "email"
-                                name= "email"
-                                id = "email"
-                                placeholder= "Email"
-                                onChange = {this.onChangeEmail}
-
-                                required
-                                >
-
-                            </Input>
-                            <Label for = "password">
-                            </Label>
-                            <Input 
-                                type = "password"
-                                name= "password"
-                                id = "passeord"
-                                placeholder= "Password"
-                                onChange = {this.onChangePassword}
-                                required
-                                >
-
-                            </Input>
-
-                            <Label for = "age">
-                            </Label>
-                            <Input 
-                                type = "text"
-                                name= "age"
-                                id = "age"
-                                placeholder= "age"
-                                onChange = {this.onChangeAge}
-
-                                >
-
-                            </Input>
-                          
-                            <Button 
-                                color = "dark"
-                                style = {{marginTop: '2rem'}}
-                                block>
-
-                                Create User
-                            </Button>
+                        <Label for = "name"></Label>
+                            <Input type ="text" name="name" id = "Contact"placeholder="Name" onChange ={this.onChangeName} required></Input>
+                            <Label for = "email"></Label>
+                            <Input type = "email" name= "email" id = "email" placeholder= "Email" onChange = {this.onChangeEmail} required></Input>
+                            <Label for = "password"></Label>
+                            <Input type = "password" name= "password" id = "passeord" placeholder= "Password" onChange = {this.onChangePassword}required></Input>
+                            <Label for = "age"></Label>
+                            <Input type = "text" name= "age" id = "age" placeholder= "age" onChange = {this.onChangeAge}></Input>        
+                            <Button color = "dark" style = {{marginTop: '2rem'}} block> Create User </Button>
 
                         
                             </FormGroup>

@@ -28,7 +28,7 @@ router.post('/users/login', async (req, res) => {
     // if user was found send it
      res.send({ user, token })
   } catch (err) {
-      res.status(400).send({"msg":"Login faild"})
+      res.status(400).send({"msg":"Identity theft is not a joke!"})
   }
 })
 

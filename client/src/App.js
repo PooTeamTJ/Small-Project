@@ -8,7 +8,6 @@
 // New stuff "React-Router-Dom"
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom"
 
-import TempPage from "./pages/temp"
 import NotFoundPage from "./pages/404"
 import LoginPage from "./pages/login"
 import ContactPage from "./pages/contact"
@@ -49,35 +48,31 @@ class App extends Component {
     // store.dispatch(getItems()); // getItems comes from itemActions
   }
 
-  render()
-  {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/404" component={NotFoundPage} />
+          <Route exact path="/contact" component={ContactPage} />
+          <Route exact path="/register" component={RegisterPage} />
+          <Redirect to="/404" />
+        </Switch>
+      </Router>
+      
 
-  return (
-    // Router Stuff
-    <Router>
-      <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route exact path="/404" component={NotFoundPage} />
-        <Route exact path="/contact" component={ContactPage} />
-        <Route exact path="/temp" component={TempPage} />
-        <Route exact path="/register" component={RegisterPage} />
-        <Redirect to="/404" />
-      </Switch>
-    </Router>
-
-    // for details on store check store.js
-    // <Provider store = {store}> 
-    // <div className="App">
-    //   <AppNavbar/>
-    //   <Container>
-    //   <ItemModel/>
-    //   <SearchList/>
-    //   <Contactlist />
-    //   </Container>
-    // </div>
-    // </Provider>
-  );
- }
+      // <Provider store = {store}> 
+      //   <div className="App">
+      //       <AppNavbar/>
+      //       <Container>
+      //           <ItemModel/>
+      //           <SearchList/>
+      //           <Contactlist />
+      //       </Container>
+      //   </div>
+      // </Provider>
+    )
+  }
 }
 
 export default App;

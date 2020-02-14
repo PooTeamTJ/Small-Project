@@ -183,4 +183,4 @@ const mapStateToProps = state => (
     }
 )
 
-export default connect(mapStateToProps, {login, clearErrors })(LoginModel);
+export default connect(mapStateToProps, {login, clearErrors })(LoginModel)

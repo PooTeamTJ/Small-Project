@@ -1,6 +1,7 @@
 // We need our react to work on the Navbar
 
 import React, { Component, Fragment } from 'react';
+import { Link, Route, Redirect } from "react-router-dom"
 
 /*
     We are import all this from the react strap 
@@ -20,8 +21,8 @@ import {
 
 import RegisterModel from './auth/RegisterModel';
 import LoginModel from './auth/LoginModel';
-
 import Logout from './auth/Logout';
+
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
@@ -119,7 +120,7 @@ class AppNavbar extends Component
                    <Navbar color= "dark" dark expand = "sm" className="mb-5">
                         <Container>
                             {/* Headning as Contact Manager */}
-                            <NavbarBrand href = "/"> ConatactManager </NavbarBrand>
+                            <NavbarBrand href = "/"> ContactManager </NavbarBrand>
                             {/* 
                                 When we click the nav bar it is going to
                                 change the isOPen to opposite state.
@@ -133,6 +134,7 @@ class AppNavbar extends Component
                         </Container>
                    </Navbar>
                </div> 
+               
                 );
             }
 
