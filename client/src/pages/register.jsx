@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import '../App.css'
 
 import React, { Component } from 'react'
 import {
@@ -41,10 +42,7 @@ class RegisterPage extends React.Component {
     componentDidUpdate(prevProps) {
         const { error, isAuthenticated} = this.props;
         if (error !== prevProps.error) {
-
-            // Check for registeration error
-
-            if(error.id === 'REGISTER_FAIL') {
+            if (error.id === 'REGISTER_FAIL') {
                 this.setState({msg: error.msg.msg})
             }
             else {
@@ -116,45 +114,43 @@ class RegisterPage extends React.Component {
 
     render() {
         return (
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
-                        <div class="card card-signin my-2">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Create an account</h5>
-                                {this.state.msg ? <Alert color ="danger">{this.state.msg}</Alert>: null} 
-                                <Form onSubmit={this.onSubmit} className="form-signin">
-                                    <div class="form-label-group">
-                                        <Input type ="text" name="name" id ="Contact" placeholder="Name" onChange ={this.onChangeName} required></Input>
-                                        <Label for="Contact">Full Name</Label>
-                                    </div>
-                                    <div class="form-label-group">
-                                        <Input type="email" name="email" id="Email" placeholder="Email" onChange={this.onChangeEmail} required></Input>
-                                        <Label for="Email">Email</Label>
-                                    </div>
-                                    <div class="form-label-group">
-                                        <Input type="password" name="password" id="Password" placeholder="Password" onChange={this.onChangePassword} required></Input>
-                                        <Label for="Password">Password</Label>
-                                    </div>
-                                    <div class="form-label-group">
-                                        <Input type="text" name="age" id="Age" placeholder="Age" onChange={this.onChangeAge}></Input> 
-                                        <Label for="Age">Age</Label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <Input type="checkbox" class="custom-control-input" id="customCheck1"></Input>
-                                        <Label class="custom-control-label" for="customCheck1">Remember password</Label>
-                                    </div>
-                                    <Button class="btn btn-lg btn-block text-uppercase" style={{ backgroundColor: '#0971FF' }} block>Sign up</Button>
-                                    <div class="text-center m-2">
-                                        Already have an account?
-                                        <Link to="/" style={{ color: 'orange' }}> Login here</Link>
-                                    </div>
-                                </Form>
+            <body className="background">
+                <div class="container pt-5">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                            <div class="card card-signin my-2">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Create an account</h5>
+                                    {this.state.msg ? <Alert color ="danger">{this.state.msg}</Alert>: null} 
+                                    <Form onSubmit={this.onSubmit} className="form-signin">
+                                        <div class="form-label-group mb-2">
+                                            <Input type ="text" name="name" id ="Contact" placeholder="Name" onChange ={this.onChangeName} required></Input>
+
+                                        </div>
+                                        <div class="form-label-group mb-2">
+                                            <Input type="email" name="email" id="Email" placeholder="Email" onChange={this.onChangeEmail} required></Input>
+
+                                        </div>
+                                        <div class="form-label-group mb-2">
+                                            <Input type="password" name="password" id="Password" placeholder="Password" onChange={this.onChangePassword} required></Input>
+
+                                        </div>
+                                        <div class="form-label-group mb-4">
+                                            <Input type="text" name="age" id="Age" placeholder="Age" onChange={this.onChangeAge}></Input> 
+
+                                        </div>
+                                        <Button class="btn btn-lg btn-block text-uppercase" style={{ backgroundColor: '#0971FF' }} block>Sign up</Button>
+                                        <div class="text-center m-2">
+                                            Already have an account?
+                                            <Link to="/" style={{ color: 'orange' }}> Login here</Link>
+                                        </div>
+                                    </Form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </body>
         )
     }
 }

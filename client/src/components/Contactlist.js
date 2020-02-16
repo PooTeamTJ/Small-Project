@@ -15,6 +15,7 @@ import {CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { deleteItem, searchItem, updateItem, getItems} from '../actions/itemActions';
 import PropTypes from 'prop-types';
+import '../App.css'
 
 
 
@@ -136,13 +137,35 @@ class Contactlist extends Component
 
            
            <div>
+               <div class="fab-container">
+                    <div class="fab fab-icon-holder">
+                        <i class="fas fa-plus fa-lg"></i>
+                    </div>
+
+                    <ul class="fab-options">
+                        <li>
+                            <span class="fab-label">Show Contacts</span>
+                            <div class="fab-icon-holder">
+                                <button onClick={this.onGetitem.bind(this)} class="buttonChange" type="button" data-toggle="modal" data-target=".create-template-modal">
+                                    <i class="fas fa-file-alt fa-lg"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="fab-label">Hide Contacts</span>
+                            <div class="fab-icon-holder">
+                                <button onClick={this.onClicklose.bind(this)} class="buttonChange" type="button" data-toggle="modal" data-target=".upload-modal">
+                                    <i class="fas fa-upload fa-lg"></i>
+                                </button>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
           {this.props.isAuthenticated ? 
-       
-           <Container> 
-                 <Button onClick = {this.onGetitem.bind(this)}> Show Contacts </Button>
-                 <br></br>
-                 <br></br>
-               <Button onClick = {this.onClicklose.bind(this)}> Close contacts</Button>
+          <div style={{width: "90%"}}>
+           <Container className="scroll"> 
+                 
               
              <ListGroup>
            
@@ -155,23 +178,9 @@ class Contactlist extends Component
                             key = {_id} 
                             timeout = {500} 
                             classNames = "fade">
-                             <ListGroupItem>
-                                    
-                                 <Button
-                                    className = "delete-btn"
-                                    color= "danger"
-                                    size= "sm"
-                                    onClick = {this.onDeleteClick.bind(this, _id)}
-                                    >
-                                        &times;     
-                                        Delete
-                                        
-                                      
-                                  </Button>
-                                  {/* <Button>Edit </Button>  */}
-                                   
-                              
-                                  
+                             <ListGroupItem className="mb-2">
+                                  {/* <Button>Edit </Button>  */}               
+                       
                                         {/*
                                             THis might be a little confusing why we use 
                                             bind in here but we have to for the delete to work
@@ -187,8 +196,11 @@ class Contactlist extends Component
 
 
                                      {/* <p> {_id} </p> */}
-                                    <Button onClick = {this.onSubmit.bind(this, _id, Firstname, Lastname, PhoneNumber, Email)}> Save </Button>
-                                    
+                                    <Button className="mt-2" size="sm" onClick = {this.onSubmit.bind(this, _id, Firstname, Lastname, PhoneNumber, Email)}> Save </Button>
+                                    <Button className = "delete-btn ml-2 mt-2" color= "danger" size= "sm" onClick = {this.onDeleteClick.bind(this, _id)}>
+                                        &times;     
+                                        Delete 
+                                    </Button>
                                   
                                  </div>                                        
                             </ListGroupItem>
@@ -198,9 +210,9 @@ class Contactlist extends Component
                  </TransitionGroup>
              </ListGroup>
            </Container>
-            : null }
            </div>
-           
+            : null }
+           </div>     
        );
    }
 }

@@ -14,19 +14,21 @@ import {getItems} from '../actions/itemActions';
 import {Button} from 'reactstrap';
 
 class ContactPage extends React.Component {
+
     render() {
         return (
             // for details on store check store.js
-
             <Provider store = {store}> 
-            <div className="App">
-                <AppNavbar />
-                <Container>
-                    <ItemModel/>
-                    <SearchList/>
-                    <Contactlist />
-                </Container>
-            </div>
+            <body className="backgroundContact">
+                <div className="App">
+                    <AppNavbar />
+                    <Container >
+                        <ItemModel/>
+                        <SearchList/>
+                        <Contactlist />
+                    </Container>
+                </div>
+            </body>
             </Provider>
         )
     }

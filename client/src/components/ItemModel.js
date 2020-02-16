@@ -105,20 +105,20 @@ class ItemModel extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{width: "100px"}}>
                 {/* checking for authentication  before we show our Add button */}
 
                 {this.props.isAuthenticated ?  
-                <Button 
+                <Button
                     color="dark" 
-                    style = {{marginBottom: '2rem'}} 
-                    onClick= {this.toggle}>  
+                    style = {{marginBottom: '1rem', width: '342px'}} 
+                    onClick= {this.toggle}
+                    className="ml-3">  
                         Add Contact
                 </Button> : 
                     <h4 
                         className = "mb-3 ml-4"
                         textalign = "center">
-                            Welcome to contact Manager!!!
                             </h4>}
                     
                    
@@ -173,14 +173,6 @@ class ItemModel extends Component {
                                 placeholder= "Email"
                                 onChange = {this.onChangeEmail}
                                 required
-                                >
-                            </Input>
-                            <Input 
-                                type = "text"
-                                dob= "dob"
-                                id = "Contact"
-                                placeholder= "DOB"
-                                onChange = {this.onChangeDOB}
                                 >
                             </Input>
                             <Button 

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link, Route, Redirect } from "react-router-dom"
 import ContactPage from "../pages/contact"
+import '../App.css'
 
 
 import { connect } from 'react-redux';
@@ -89,6 +90,7 @@ class LoginPage extends React.Component {
 
     render() {
         return (
+            <body className="background">
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -124,7 +126,7 @@ class LoginPage extends React.Component {
                         {this.props.isAuthenticated ? <Redirect to="/contact" /> : null }
                     </Route>
                 </div>
-
+            </body>
                 
             
         )

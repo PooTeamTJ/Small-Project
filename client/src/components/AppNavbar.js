@@ -2,6 +2,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { Link, Route, Redirect } from "react-router-dom"
+import '../App.css'
 
 /*
     We are import all this from the react strap 
@@ -19,10 +20,7 @@ import {
     Container
 } from 'reactstrap'
 
-import RegisterModel from './auth/RegisterModel';
-import LoginModel from './auth/LoginModel';
 import Logout from './auth/Logout';
-
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
@@ -64,7 +62,7 @@ class AppNavbar extends Component
                         <NavItem>
                             <span className = "navbar-text mr-3">
                                 <strong>
-                                    {user ? `welcome ${user.name}` : ''}
+                                    {user ? `Welcome ${user.name}` : ''}
                                 </strong>
                             </span>
                         </NavItem>
@@ -80,61 +78,41 @@ class AppNavbar extends Component
                     [login, create user]
                 */
                 
-                const guestLinks = (
-                    <Fragment>
-                    <NavItem>
-                    <RegisterModel></RegisterModel>
-                </NavItem>
-                
-                <NavItem>
-                    <LoginModel></LoginModel>
-                </NavItem>
-                </Fragment>
-                );
                 return(
-
-                
-                /*
-                    Parent element is div.
-                    We are actually using our bootstrap 
-                    right now
-                */
-
-               <div>
-                   {/*
-                        --- THis is just the navbar---
-                     1.
-                            We want our navbar to have a dark color for now
-                            so that the text can be a lite color
-                            later on we can change it to what ever color we 
-                            want."dark"
-                        2. 
-                            We want to really see how responsive is our front end
-                            so we are doing small "sm".
-                        3. 
-                            we want our margin to be below 5 points
-                            "mb-5".
-                        
-                        We can change this in the future
-                   */}
-                   <Navbar color= "dark" dark expand = "sm" className="mb-5">
-                        <Container>
-                            {/* Headning as Contact Manager */}
-                            <NavbarBrand href = "/"> ContactManager </NavbarBrand>
-                            {/* 
-                                When we click the nav bar it is going to
-                                change the isOPen to opposite state.
-                             */}
-                            <NavbarToggler onClick = {this.toggle}/>
-                            <Collapse isOpen={this.state.isOpen} navbar>
-                                <Nav className= "ml-auto" navbar>
-                                  {isAuthenticated ? authLinks : guestLinks} {/* checking for authentication*/}
-                                </Nav>
-                            </Collapse>
-                        </Container>
-                   </Navbar>
-               </div> 
-               
+                        <div>
+                            {/*
+                                    --- THis is just the navbar---
+                                1.
+                                        We want our navbar to have a dark color for now
+                                        so that the text can be a lite color
+                                        later on we can change it to what ever color we 
+                                        want."dark"
+                                    2. 
+                                        We want to really see how responsive is our front end
+                                        so we are doing small "sm".
+                                    3. 
+                                        we want our margin to be below 5 points
+                                        "mb-5".
+                                    
+                                    We can change this in the future
+                            */}
+                            <Navbar style={{ backgroundColor: '#0971FF', color: 'white'}} expand = "sm" className="mb-5">
+                                    <Container>
+                                        {/* Headning as Contact Manager */}
+                                        <NavbarBrand href = "/" style={{ color: 'white'}}> Assistant To The Regional Contact Manager </NavbarBrand>
+                                        {/* 
+                                            When we click the nav bar it is going to
+                                            change the isOPen to opposite state.
+                                        */}
+                                        <NavbarToggler onClick = {this.toggle}/>
+                                        <Collapse isOpen={this.state.isOpen} navbar>
+                                            <Nav className= "ml-auto" navbar>
+                                            {isAuthenticated ? authLinks : null} {/* checking for authentication*/}
+                                            </Nav>
+                                        </Collapse>
+                                    </Container>
+                            </Navbar>
+                        </div> 
                 );
             }
 
