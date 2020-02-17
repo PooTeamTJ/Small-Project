@@ -99,14 +99,12 @@ class LoginPage extends React.Component {
                                     <h5 className="card-title text-center">Sign In</h5>
                                     {this.state.msg ? <Alert color ="danger">{this.state.msg}</Alert>: null} {/* checking for error msg*/}
                                     <Form onSubmit={this.onSubmit} className="form-signin">
-                                        <div className="form-label-group">
+                                        <div className="form-label-group mb-2">
                                             <Input type="email" name="email" id="email" placeholder="Email" onChange={this.onChangeEmail} className="form-control"  required autoFocus></Input>
-                                            <Label for="inputEmail">Email</Label>
                                         </div>
 
-                                        <div className="form-label-group">
+                                        <div className="form-label-group mb-2">
                                             <Input type="password" name="password" id="password" className="form-control" placeholder="Password" onChange={this.onChangePassword} required></Input>
-                                            <Label for="inputPassword">Password</Label>
                                         </div>
                                         <div className="custom-control custom-checkbox mb-3">
                                             <Input type="checkbox" className="custom-control-input" id="customCheck1"></Input>
@@ -127,8 +125,8 @@ class LoginPage extends React.Component {
                     </Route>
                 </div>
             </body>
-                
-            
+
+
         )
     }
 }
