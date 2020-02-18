@@ -99,7 +99,7 @@ class AppNavbar extends Component
                             <Navbar style={{ backgroundColor: '#0971FF', color: 'white'}} expand = "sm" className="mb-5">
                                     <Container>
                                         {/* Headning as Contact Manager */}
-                                        <NavbarBrand href = "/" style={{ color: 'white'}}> Assistant To The Regional Contact Manager </NavbarBrand>
+                                        <NavbarBrand href = "/" style={{ color: 'white'}}> Assistant To The Regional Contact Manager test </NavbarBrand>
                                         {/*
                                             When we click the nav bar it is going to
                                             change the isOPen to opposite state.
