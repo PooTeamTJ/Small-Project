@@ -15,10 +15,14 @@ import {
 // Imports
 const intialState = {
     token: localStorage.getItem('token'), // Getting the token form localstorage.
-    isAuthenticated: null,
+    isAuthenticated: null, // changed that
     isLoading: false,
     user: null,
+<<<<<<< HEAD
     msg: {}
+=======
+    showSuccess: false
+>>>>>>> 1bf2902b6ecc4609123f199a11065ca50206c763
 }
 
 export default function(state = intialState, action) {
@@ -26,7 +30,8 @@ export default function(state = intialState, action) {
         case USER_LOADING:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isAuthenticated: true
             };
         case USER_LOADED:
             return{
@@ -42,12 +47,22 @@ export default function(state = intialState, action) {
                 ...action.payload,
                 isAuthenticated: true,
                 isLoading: false
-                
+
             };
             case REGISTER_SUCCESS:
                 return {
+<<<<<<< HEAD
                     msg: action.payload.msg
                    
+=======
+                    ...state,
+                token: null,
+                user: null,
+                isAuthenticated: false, // changed that
+                isLoading: false,
+                showSuccess: true,
+                msg: action.payload.msg
+>>>>>>> 1bf2902b6ecc4609123f199a11065ca50206c763
                 }
         case AUTH_ERROR:
         case LOGIN_FAIL:
@@ -58,12 +73,13 @@ export default function(state = intialState, action) {
                 ...state,
                 token: null,
                 user: null,
-                isAuthenticated: false,
-                isLoading: false
+                isAuthenticated: false, // changed that
+                isLoading: false,
+                showSuccess:false
             }
         default:
             return state;
 
-        
+
     }
 }

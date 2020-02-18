@@ -1,5 +1,5 @@
 /*
-    Authorized actions this where we make our hhtp 
+    Authorized actions this where we make our hhtp
     requests thorough axios
 */
 
@@ -19,7 +19,7 @@ import{
 
 // Check token & load user
 export const loadUser = () => (dispatch, getState) => {
-    // User loading 
+    // User loading
     dispatch({type: USER_LOADING});
     axios.get('/users/me', tokenConfig(getState))
         .then(res => dispatch({
@@ -30,7 +30,7 @@ export const loadUser = () => (dispatch, getState) => {
             dispatch(returnErrors(err.response.data, err.response.status));
             dispatch({
                 type: AUTH_ERROR
-                
+
             })
         });
 }
@@ -50,12 +50,21 @@ export const register = ({ name, email, password, age}) => dispatch => {
 
       axios.post('/users', body, config) //making Add user request.
         .then(res => {
+<<<<<<< HEAD
             dispatch({ 
             type: REGISTER_SUCCESS,
             payload:res.data
              })
              
          })
+=======
+          dispatch({
+            type: REGISTER_SUCCESS,
+            payload:res.data
+        })
+
+      })
+>>>>>>> 1bf2902b6ecc4609123f199a11065ca50206c763
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'));
             dispatch({
@@ -69,7 +78,7 @@ export const login = ({email, password}) => dispatch => {
     const config = {
         headers: {
             "Content-type": "application/json"
- 
+
         }
     }
       //  Request body

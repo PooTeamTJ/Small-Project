@@ -15,7 +15,7 @@ class ContactPage extends React.Component {
     render() {
         return (
             // for details on store check store.js
-            <Provider store = {store}> 
+            <Provider store = {store}>
             <body className="backgroundContact">
                 <div className="App">
                     <AppNavbar />

@@ -7,7 +7,11 @@
     This is the page that shows all our contacts once we login.
 */
 
+<<<<<<< HEAD
 import React, { Component } from 'react';
+=======
+import React, { Component} from 'react';
+>>>>>>> 1bf2902b6ecc4609123f199a11065ca50206c763
 
 import {Container, ListGroup, ListGroupItem, Button, Input} from 'reactstrap';
 
@@ -21,7 +25,7 @@ import '../App.css'
 
 class Contactlist extends Component
 {
-  
+
     state =  {
 
         firstname: null,
@@ -32,11 +36,11 @@ class Contactlist extends Component
     }
 
 
-    
+
     static propTypes = {
         isAuthenticated: PropTypes.bool
     }
-   
+
     // life cycle method by react
 
     onChangeFirst = (e) => {
@@ -71,42 +75,42 @@ class Contactlist extends Component
         // e.preventDefault();
 
         if(this.state.firstname !== null){
-            Firstname = this.state.firstname  
+            Firstname = this.state.firstname
            };
 
          if(this.state.lastname !== null){
-            Lastname = this.state.lastname  
+            Lastname = this.state.lastname
           };
 
           if(this.state.phonenumber !== null){
-            PhoneNumber = this.state.phonenumber 
+            PhoneNumber = this.state.phonenumber
           };
 
           if(this.state.email !== null){
-            Email = this.state.email 
+            Email = this.state.email
           };
-       
+
 
         const newItem = {
             Firstname : Firstname,
             Lastname: Lastname,
             PhoneNumber: PhoneNumber,
             Email: Email,
-            
+
         }
-        
+
         console.log(newItem)
             this.props.updateItem(newItem, id);
 
-                  
+
     }
 
 
     onDeleteClick = (id) => {
-        
-        
+
+
         this.props.deleteItem(id);
-      
+
     }
 
     onGetitem = () => {
@@ -119,8 +123,8 @@ class Contactlist extends Component
 
 
    render() {
-   
-       
+
+
        const { items } = this.props.item  //  this is a deconstructer
 
 
@@ -129,13 +133,13 @@ class Contactlist extends Component
                 1. Dark Color for our contact
                 2. style with 2rem margin
                 3.
-                    When we click it is going to 
+                    When we click it is going to
                     prompt us with firstname, lastname and phonenumber
                     and we enter them accordingly let's see if this
                     works there should be a easier way to do this.
             */
 
-           
+
            <div>
                <div class="fab-container">
                     <div class="fab fab-icon-holder">
@@ -157,37 +161,37 @@ class Contactlist extends Component
                                 <button onClick={this.onClicklose.bind(this)} class="buttonChange" type="button" data-toggle="modal" data-target=".upload-modal">
                                     <i class="fas fa-upload fa-lg"></i>
                                 </button>
-                                
+
                             </div>
                         </li>
                     </ul>
                 </div>
-          {this.props.isAuthenticated ? 
+          {this.props.isAuthenticated ?
           <div style={{width: "90%"}}>
-           <Container className="scroll"> 
-                 
-              
+           <Container className="scroll">
+
+
              <ListGroup>
-           
-                 <TransitionGroup className = "Contact-list">
-              
+
+                 <TransitionGroup className = "Contact-list" style={{marginTop: "5rem", float: "left"}}>
+
                     {/*items.map maps all the contacts that we got from the getItems*/}
-                      
+
                      {items.map(({ _id,Firstname,Lastname,PhoneNumber,Email}) => (
-                         <CSSTransition 
-                            key = {_id} 
-                            timeout = {500} 
+                         <CSSTransition
+                            key = {_id}
+                            timeout = {500}
                             classNames = "fade">
                              <ListGroupItem className="mb-2">
-                                  {/* <Button>Edit </Button>  */}               
-                       
+                                  {/* <Button>Edit </Button>  */}
+
                                         {/*
-                                            THis might be a little confusing why we use 
+                                            THis might be a little confusing why we use
                                             bind in here but we have to for the delete to work
                                             or else it wont work.
                                         */}
-                         
-                        
+
+
                                  <div>
                                     <Input type = "text" defaultValue = {Firstname} onChange = {this.onChangeFirst}>  </Input>
                                     <Input type = "text"  defaultValue = {Lastname} onChange = {this.onChangeLast}> </Input>
@@ -198,13 +202,13 @@ class Contactlist extends Component
                                      {/* <p> {_id} </p> */}
                                     <Button className="mt-2" size="sm" onClick = {this.onSubmit.bind(this, _id, Firstname, Lastname, PhoneNumber, Email)}> Save </Button>
                                     <Button className = "delete-btn ml-2 mt-2" color= "danger" size= "sm" onClick = {this.onDeleteClick.bind(this, _id)}>
-                                        &times;     
-                                        Delete 
+                                        &times;
+                                        Delete
                                     </Button>
-                                  
-                                 </div>                                        
+
+                                 </div>
                             </ListGroupItem>
-                             
+
                          </CSSTransition>
                      ))}
                  </TransitionGroup>
@@ -212,7 +216,7 @@ class Contactlist extends Component
            </Container>
            </div>
             : null }
-           </div>     
+           </div>
        );
    }
 }

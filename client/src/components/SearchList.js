@@ -1,5 +1,5 @@
 /*
-    This page takes 
+    This page takes
     Takes the first name our contact and search them
     in the loaded list.
 */
@@ -24,7 +24,7 @@ import PropTypes from 'prop-types';
 
 class SearchList extends Component
 {
-    state = 
+    state =
     {
         modal: false,
         firstname: " "
@@ -56,10 +56,10 @@ class SearchList extends Component
         return (
         <div style={{width: "50px"}}>
 
-            {this.props.isAuthenticated ?    
+            {this.props.isAuthenticated ?
                     <Form inline onSubmit = {this.onSubmit} style={{width: "25vw"}}>
                                          <FormGroup>
-                                                    <Input 
+                                                    <Input
                                                         type = "text"
                                                         firstname= "firstname"
                                                         id = "Contact"
@@ -77,7 +77,7 @@ class SearchList extends Component
                                             : ''}
                     <Modal isOpen = {this.state.modal} toggle = {this.toggle}>
                     <ModalHeader toggle = {this.toggle}>
-                        Search some contacts 
+                        Search some contacts
                             </ModalHeader>
                                  <ModalBody>
                                      <Form onSubmit = {this.onSubmit}>
@@ -85,7 +85,7 @@ class SearchList extends Component
                                              <Label for = "Contact">
                                                      Contact
                                                 </Label>
-                                                    <Input 
+                                                    <Input
                                                         type = "text"
                                                         firstname= "firstname"
                                                         id = "Contact"
@@ -95,8 +95,8 @@ class SearchList extends Component
 
                                                      </Input>
 
-                            
-                                                    <Button 
+
+                                                    <Button
                                                         color = "dark"
                                                         style = {{marginTop: '2rem'}}
                                                         block>

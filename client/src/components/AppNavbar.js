@@ -4,7 +4,7 @@ import React, { Component, Fragment } from 'react';
 import '../App.css'
 
 /*
-    We are import all this from the react strap 
+    We are import all this from the react strap
     Beacause we want a responsive navbar
     We can work more on this in the future
 */
@@ -27,7 +27,7 @@ import propTypes from 'prop-types';
 
 class AppNavbar extends Component
 {
-    
+
      state = {isOpen: false}
 
      static propTypes = {auth: propTypes.object.isRequired } // we get the proptypes from the import
@@ -43,11 +43,11 @@ class AppNavbar extends Component
             );
         }
             /*
-                We are going to render our nav bar using 
-                Differnt components that we imported on the 
+                We are going to render our nav bar using
+                Differnt components that we imported on the
                 top
             */
-        
+
             render() {
                 const {isAuthenticated, user } = this.props.auth;
 
@@ -67,16 +67,16 @@ class AppNavbar extends Component
                         </NavItem>
                         <NavItem>
                              <Logout></Logout>
-                             
+
                          </NavItem>
                     </Fragment>
                 );
-                
+
                 /*
                     Deafault modal you are going to see once you first visit the page
                     [login, create user]
                 */
-                
+
                 return(
                         <div>
                             {/*
@@ -84,22 +84,22 @@ class AppNavbar extends Component
                                 1.
                                         We want our navbar to have a dark color for now
                                         so that the text can be a lite color
-                                        later on we can change it to what ever color we 
+                                        later on we can change it to what ever color we
                                         want."dark"
-                                    2. 
+                                    2.
                                         We want to really see how responsive is our front end
                                         so we are doing small "sm".
-                                    3. 
+                                    3.
                                         we want our margin to be below 5 points
                                         "mb-5".
-                                    
+
                                     We can change this in the future
                             */}
                             <Navbar style={{ backgroundColor: '#0971FF', color: 'white'}} expand = "sm" className="mb-5">
                                     <Container>
                                         {/* Headning as Contact Manager */}
-                                        <NavbarBrand href = "/" style={{ color: 'white'}}> Assistant To The Regional Contact Manager </NavbarBrand>
-                                        {/* 
+                                        <NavbarBrand href = "/" style={{ color: 'white'}}> Assistant To The Regional Contact Manager test </NavbarBrand>
+                                        {/*
                                             When we click the nav bar it is going to
                                             change the isOPen to opposite state.
                                         */}
@@ -111,7 +111,7 @@ class AppNavbar extends Component
                                         </Collapse>
                                     </Container>
                             </Navbar>
-                        </div> 
+                        </div>
                 );
             }
 
