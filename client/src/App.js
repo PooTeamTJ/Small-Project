@@ -6,7 +6,7 @@
 */
 
 // New stuff "React-Router-Dom"
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 
 import NotFoundPage from "./pages/404"
 import LoginPage from "./pages/login"
@@ -17,19 +17,10 @@ import RegisterPage from "./pages/register"
 
 import React, { Component} from 'react';
 
-import AppNavbar from './components/AppNavbar'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import Contactlist from './components/Contactlist';
-import ItemModel from './components/ItemModel';
-import { Container } from 'reactstrap';
-import SearchList from './components/SearchList';
 import {loadUser} from './actions/authActions';
-import { Provider } from 'react-redux';
 import store from './store';
-import {getItems} from './actions/itemActions';
-import {Button} from 'reactstrap';
 
 
 

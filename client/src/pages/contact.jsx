@@ -7,11 +7,8 @@ import Contactlist from '../components/Contactlist';
 import ItemModel from '../components/ItemModel';
 import { Container } from 'reactstrap';
 import SearchList from '../components/SearchList';
-import {loadUser} from '../actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../store';
-import {getItems} from '../actions/itemActions';
-import {Button} from 'reactstrap';
 
 class ContactPage extends React.Component {
 

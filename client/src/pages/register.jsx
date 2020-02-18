@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
-
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
-
     Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
     Form,
-    FormGroup,
-    Label,
     Input,
-    NavLink,
     Alert
 } from 'reactstrap';
 
@@ -40,9 +32,13 @@ class RegisterPage extends React.Component {
     } 
 
     componentDidUpdate(prevProps) {
-        const { error, isAuthenticated} = this.props;
+        // console.log(this.props)
+        const { error, isAuthenticated } = this.props;
         if (error !== prevProps.error) {
             if (error.id === 'REGISTER_FAIL') {
+                this.setState({msg: error.msg.msg})
+            }
+            if (error.id === 'REGISTER_SUCCESS') {
                 this.setState({msg: error.msg.msg})
             }
             else {

@@ -1,7 +1,6 @@
 // We need our react to work on the Navbar
 
 import React, { Component, Fragment } from 'react';
-import { Link, Route, Redirect } from "react-router-dom"
 import '../App.css'
 
 /*

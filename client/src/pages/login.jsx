@@ -1,8 +1,6 @@
-import React, { Component } from "react"
 import { Link, Route, Redirect } from "react-router-dom"
-import ContactPage from "../pages/contact"
 import '../App.css'
-
+import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,14 +8,9 @@ import { login } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
 import {
     Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
     Form,
-    FormGroup,
     Label,
     Input,
-    NavLink,
     Alert
 } from 'reactstrap';
 

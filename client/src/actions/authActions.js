@@ -4,7 +4,7 @@
 */
 
 import axios from 'axios';
-import { returnErrors } from './errorActions';
+import { returnErrors, returnSuccess } from './errorActions';
 
 import{
     USER_LOADED,
@@ -49,10 +49,13 @@ export const register = ({ name, email, password, age}) => dispatch => {
       const body = JSON.stringify({ name, email, password, age});
 
       axios.post('/users', body, config) //making Add user request.
-        .then(res => dispatch({
+        .then(res => {
+            dispatch({ 
             type: REGISTER_SUCCESS,
             payload:res.data
-        }))
+             })
+             
+         })
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'));
             dispatch({

@@ -7,9 +7,9 @@
     This is the page that shows all our contacts once we login.
 */
 
-import React, { Component, Fragment} from 'react';
+import React, { Component } from 'react';
 
-import {Container, ListGroup, ListGroupItem, Button, Modal, ModalHeader, Form, FormGroup, ModalBody,Label, Input} from 'reactstrap';
+import {Container, ListGroup, ListGroupItem, Button, Input} from 'reactstrap';
 
 import {CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';

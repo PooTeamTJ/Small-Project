@@ -4,7 +4,7 @@
     THis where we have to make the update request in  the future
     using .patch
 */
-import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, SEARCH_ITEM, ITEMS_LOADING, UPDATE_ITEM} from './types';
+import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, SEARCH_ITEM, ITEMS_LOADING} from './types';
 import axios from 'axios';
 import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
