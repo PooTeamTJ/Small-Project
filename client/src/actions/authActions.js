@@ -50,21 +50,12 @@ export const register = ({ name, email, password, age}) => dispatch => {
 
       axios.post('/users', body, config) //making Add user request.
         .then(res => {
-<<<<<<< HEAD
             dispatch({ 
             type: REGISTER_SUCCESS,
             payload:res.data
              })
              
          })
-=======
-          dispatch({
-            type: REGISTER_SUCCESS,
-            payload:res.data
-        })
-
-      })
->>>>>>> 1bf2902b6ecc4609123f199a11065ca50206c763
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'));
             dispatch({

@@ -7,11 +7,7 @@
     This is the page that shows all our contacts once we login.
 */
 
-<<<<<<< HEAD
 import React, { Component } from 'react';
-=======
-import React, { Component} from 'react';
->>>>>>> 1bf2902b6ecc4609123f199a11065ca50206c763
 
 import {Container, ListGroup, ListGroupItem, Button, Input} from 'reactstrap';
 
