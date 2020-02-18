@@ -41,6 +41,7 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store = {store}> 
       <Router>
         <Switch>
           <Route exact path="/" component={LoginPage} />
@@ -50,9 +51,10 @@ class App extends Component {
           <Redirect to="/404" />
         </Switch>
       </Router>
+     </Provider>
       
 
-      // <Provider store = {store}> 
+      // 
       //   <div className="App">
       //       <AppNavbar/>
       //       <Container>
@@ -61,7 +63,7 @@ class App extends Component {
       //           <Contactlist />
       //       </Container>
       //   </div>
-      // </Provider>
+      // 
     )
   }
 }
