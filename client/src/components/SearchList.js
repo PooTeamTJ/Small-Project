@@ -1,5 +1,5 @@
 /*
-    This page takes 
+    This page takes
     Takes the first name our contact and search them
     in the loaded list.
 */
@@ -24,7 +24,7 @@ import PropTypes from 'prop-types';
 
 class SearchList extends Component
 {
-    state = 
+    state =
     {
         modal: false,
         firstname: " "
@@ -34,14 +34,6 @@ class SearchList extends Component
         isAuthenticated: PropTypes.bool
     }
 
-    toggle = () =>
-    {
-        this.setState(
-            {
-                modal: !this.state.modal
-            }
-        );
-    };
 
     onChangeFirst = (e) => {
 
@@ -57,28 +49,35 @@ class SearchList extends Component
         Firstname: this.state.firstname
     }
     this.props.searchItem(newItem);
-
-    this.toggle();
     }
 
     render()
     {
         return (
-        <div>
+        <div style={{width: "50px"}}>
 
-            {this.props.isAuthenticated ?  
-                <Button 
-                    color="dark" 
-                    style = {{marginBottom: '2rem', marginRight: '5rem', display: "flex", float: "right"}}
-                    onClick= {this.toggle}> 
-                        Search Contact
-                </Button> : ''}
-                    <Modal 
-                    isOpen = {this.state.modal}
-                    toggle = {this.toggle}
-                    >
+            {this.props.isAuthenticated ?
+                    <Form inline onSubmit = {this.onSubmit} style={{width: "25vw"}}>
+                                         <FormGroup>
+                                                    <Input
+                                                        type = "text"
+                                                        firstname= "firstname"
+                                                        id = "Contact"
+                                                        placeholder= "Firstname"
+                                                        onChange = {this.onChangeFirst}
+                                                        className="mb-2 ml-3"
+                                                        >
+
+                                                     </Input>
+                                                    <Button color = "dark" className="ml-3 mb-2">
+                                                        Search Contact
+                                                    </Button>
+                                            </FormGroup>
+                    </Form>
+                                            : ''}
+                    <Modal isOpen = {this.state.modal} toggle = {this.toggle}>
                     <ModalHeader toggle = {this.toggle}>
-                        Search some contacts 
+                        Search some contacts
                             </ModalHeader>
                                  <ModalBody>
                                      <Form onSubmit = {this.onSubmit}>
@@ -86,7 +85,7 @@ class SearchList extends Component
                                              <Label for = "Contact">
                                                      Contact
                                                 </Label>
-                                                    <Input 
+                                                    <Input
                                                         type = "text"
                                                         firstname= "firstname"
                                                         id = "Contact"
@@ -96,8 +95,8 @@ class SearchList extends Component
 
                                                      </Input>
 
-                            
-                                                    <Button 
+
+                                                    <Button
                                                         color = "dark"
                                                         style = {{marginTop: '2rem'}}
                                                         block>

@@ -1,55 +1,176 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import '../App.css'
 
-const RegisterPage = () => {
-    return (
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
-                    <div class="card card-signin my-2">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Create an account</h5>
-                            <form class="form-signin">
-                                <div class="form-label-group">
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
-                                    <label for="inputEmail">Email</label>
-                                </div>
+import React, { Component } from 'react'
+import {
 
-                                <div class="form-label-group">
-                                        <input type="text" id="inputName" class="form-control" placeholder="Name" required />
-                                        <label for="inputName">Full Name</label>
-                                </div>
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    Form,
+    FormGroup,
+    Label,
+    Input,
+    NavLink,
+    Alert
+} from 'reactstrap';
 
-                                <div class="form-label-group">
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
-                                    <label for="inputPassword">Password</label>
-                                </div>
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {register} from '../actions/authActions';
+import { clearErrors } from '../actions/errorActions';
 
-                                <div class="form-label-group">
-                                        <input type="text" id="inputCompany" class="form-control" placeholder="Company" required />
-                                        <label for="inputCompany">Company</label>
-                                </div>
+class RegisterPage extends React.Component {
+    state =  {
+        modal: false,
+        name: "",
+        email: "",
+        password: "",
+        age: "",
+        msg: null,
+        successMessage: null
+    };
 
-                                <div class="form-label-group">
-                                        <input type="text" id="inputJob" class="form-control" placeholder="Job" required />
-                                        <label for="inputJob">Job Title</label>
+    static propTypes  = {
+        isAuthenticated: PropTypes.bool,
+        error: PropTypes.object.isRequired,
+        register: PropTypes.func.isRequired,
+        clearErrors: PropTypes.func.isRequired,
+        showSuccess:PropTypes.bool
+
+    }
+
+    componentDidUpdate(prevProps) {
+        const { error, isAuthenticated, showSuccess} = this.props;
+        if (error !== prevProps.error) {
+            if (error.id === 'REGISTER_FAIL') {
+                this.setState({msg: error.msg.msg, successMessage:null})
+            }
+            else {
+                this.setState({msg:null})
+            }
+
+        }
+        if(showSuccess !== prevProps.showSuccess)
+        {
+          if (showSuccess === true)
+            this.setState({successMessage:'User was created!', msg: null})
+
+        }
+
+        if(this.state.modal) {
+            if(isAuthenticated) {
+                this.toggle();
+            }
+        }
+    }
+
+    toggle = () => {
+        // Clear errors is coming from erroActions
+        this.props.clearErrors();
+        this.setState({
+                modal: !this.state.modal
+            }
+        );
+    };
+
+    onChangeName = (e) => {
+
+        this.setState({
+            name: e.target.value
+        })
+    };
+
+    onChangeEmail = (e) => {
+
+        this.setState({
+            email: e.target.value
+        })
+    };
+
+    onChangePassword = (e) => {
+
+        this.setState({
+            password: e.target.value
+        })
+    };
+
+    onChangeAge = (e) => {
+
+        this.setState({
+            age: e.target.value
+        })
+    };
+
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const {name, email, password, age} = this.state;
+
+        // Create a user object
+        const newUser = {
+            name,
+            email,
+            password,
+            age
+        }
+
+    this.props.register(newUser);
+
+    }
+
+    render() {
+        return (
+            <body className="background">
+                <div class="container pt-5">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                            <div class="card card-signin my-2">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Create an account</h5>
+                                    {this.state.msg ? <Alert color ="danger">{this.state.msg}</Alert>: null}
+                                    {this.state.successMessage ? <Alert color ="success">{this.state.successMessage}</Alert>: null}
+
+                                    <Form onSubmit={this.onSubmit} className="form-signin">
+                                        <div class="form-label-group mb-2">
+                                            <Input type ="text" name="name" id ="Contact" placeholder="Name" onChange ={this.onChangeName} required></Input>
+
+                                        </div>
+                                        <div class="form-label-group mb-2">
+                                            <Input type="email" name="email" id="Email" placeholder="Email" onChange={this.onChangeEmail} required></Input>
+
+                                        </div>
+                                        <div class="form-label-group mb-2">
+                                            <Input type="password" name="password" id="Password" placeholder="Password" onChange={this.onChangePassword} required></Input>
+
+                                        </div>
+                                        <div class="form-label-group mb-4">
+                                            <Input type="text" name="age" id="Age" placeholder="Age" onChange={this.onChangeAge}></Input>
+
+                                        </div>
+                                        <Button class="btn btn-lg btn-block text-uppercase" style={{ backgroundColor: '#0971FF' }} block>Sign up</Button>
+                                        <div class="text-center m-2">
+                                            Already have an account?
+                                            <Link to="/" style={{ color: 'orange' }}> Login here</Link>
+                                        </div>
+                                    </Form>
                                 </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" />
-                                    <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                </div>
-                                <button class="btn btn-primary btn-block text-uppercase" type="submit">Sign up</button>
-                                <div class="text-center m-2">
-                                    Already have an account?
-                                    <Link to="/" style={{ color: 'orange' }}> Login here</Link>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    )
+            </body>
+        )
+    }
 }
 
-export default RegisterPage
+const mapStateToProps = state => (
+    {
+        isAuthenticated: state.auth.isAuthenticated,
+        error: state.error,
+        showSuccess:state.auth.showSuccess
+    }
+)
+
+export default connect(mapStateToProps, {register, clearErrors })(RegisterPage);

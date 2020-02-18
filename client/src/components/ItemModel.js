@@ -42,11 +42,11 @@ class ItemModel extends Component {
     };
 
     /*
-        The value that we take from the input 
+        The value that we take from the input
         we set the state of our state.
         Firstname, Lastname, phonenumber, email, dob
     */
-    
+
     onChangeFirst = (e) => {
 
         this.setState({
@@ -68,7 +68,7 @@ class ItemModel extends Component {
         })
     };
 
-    
+
     onChangeEmail = (e) => {
 
         this.setState({
@@ -97,7 +97,7 @@ class ItemModel extends Component {
             Email: this.state.email,
             Dob: this.state.dob
         }
-    
+
     this.props.addItem(newItem);
 
     this.toggle();
@@ -105,32 +105,31 @@ class ItemModel extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{width: "100px"}}>
                 {/* checking for authentication  before we show our Add button */}
 
-                {this.props.isAuthenticated ?  
-                // if logged in
-                <Button 
-                    color="dark" 
-                    style = {{marginBottom: '2rem', marginRight: '5rem', display: "flex", float: "right"}}
-                    onClick= {this.toggle}>  
+                {this.props.isAuthenticated ?
+                <Button
+                    color="dark"
+                    style = {{marginBottom: '1rem', width: '342px'}}
+                    onClick= {this.toggle}
+                    className="ml-3">
                         Add Contact
-                </Button> 
+                </Button>
                 : // else if not logged in
-                    <h4 
+                    <h4
                         className = "mb-3 ml-4"
                         textalign = "center">
-                        Welcome to contact Manager!!!
-                    </h4>}
-                    
-                   
-                    <Modal 
+                            </h4>}
+
+
+                    <Modal
                     isOpen = {this.state.modal}
                     toggle = {this.toggle}
                     >
-                
+
                         <ModalHeader toggle = {this.toggle}>
-                        Add some contacts 
+                        Add some contacts
                         </ModalHeader>
                             <ModalBody>
                 <Form onSubmit = {this.onSubmit}>
@@ -138,7 +137,7 @@ class ItemModel extends Component {
                         <Label for = "Contact">
                             Contact
                             </Label>
-                            <Input 
+                            <Input
                                 type = "text"
                                 firstname= "firstname"
                                 id = "Contact"
@@ -148,7 +147,7 @@ class ItemModel extends Component {
                                 >
 
                             </Input>
-                            <Input 
+                            <Input
                                 type = "text"
                                 lastname= "Lastname"
                                 id = "Contact"
@@ -158,7 +157,7 @@ class ItemModel extends Component {
                                 >
 
                             </Input>
-                            <Input 
+                            <Input
                                 type = "text"
                                 phonenumber= "Phonenumber"
                                 id = "Contact"
@@ -168,7 +167,7 @@ class ItemModel extends Component {
                                 >
 
                             </Input>
-                            <Input 
+                            <Input
                                 type = "text"
                                 email= "email"
                                 id = "Contact"
@@ -177,15 +176,7 @@ class ItemModel extends Component {
                                 required
                                 >
                             </Input>
-                            <Input 
-                                type = "text"
-                                dob= "dob"
-                                id = "Contact"
-                                placeholder= "DOB"
-                                onChange = {this.onChangeDOB}
-                                >
-                            </Input>
-                            <Button 
+                            <Button
                                 color = "dark"
                                 style = {{marginTop: '2rem'}}
                                 block>
@@ -193,13 +184,13 @@ class ItemModel extends Component {
                                 Add Contact
                             </Button>
 
-                        
+
                          </FormGroup>
                     </Form>
-                </ModalBody>        
+                </ModalBody>
             </Modal>
         </div>
-            
+
         );
     }
 }

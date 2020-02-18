@@ -15,9 +15,10 @@ import {
 // Imports
 const intialState = {
     token: localStorage.getItem('token'), // Getting the token form localstorage.
-    isAuthenticated: null,
+    isAuthenticated: false, // changed that
     isLoading: false,
-    user: null
+    user: null,
+    showSuccess: false
 }
 
 export default function(state = intialState, action) {
@@ -41,15 +42,17 @@ export default function(state = intialState, action) {
                 ...action.payload,
                 isAuthenticated: true,
                 isLoading: false
-                
+
             };
             case REGISTER_SUCCESS:
                 return {
                     ...state,
                 token: null,
                 user: null,
-                isAuthenticated: false,
-                isLoading: false 
+                isAuthenticated: false, // changed that
+                isLoading: false,
+                showSuccess: true,
+                msg: action.payload.msg
                 }
         case AUTH_ERROR:
         case LOGIN_FAIL:
@@ -60,12 +63,13 @@ export default function(state = intialState, action) {
                 ...state,
                 token: null,
                 user: null,
-                isAuthenticated: false,
-                isLoading: false
+                isAuthenticated: false, // changed that
+                isLoading: false,
+                showSuccess:false
             }
         default:
             return state;
 
-        
+
     }
 }
